@@ -49,3 +49,7 @@ async def upload_video(file: UploadFile = File(...)):
 @app.get("/video/{video_id}")
 def get_video(video_id: str):
     return FileResponse(f"{UPLOAD_DIR}/{video_id}_processed.mp4")
+@app.get("/debug/weather")
+def debug_weather():
+    from weather import get_weather
+    return get_weather()
